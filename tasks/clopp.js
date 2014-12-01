@@ -10,21 +10,40 @@
 
 var fs = require("fs");
 var path = require("path");
-var glob = require("glob");
+var clopp = require("../lib/clopp.js");
 
-module.exports = function(grunt) {
-
+module.exports = function(grunt) 
+{
     grunt.registerMultiTask("clopp", "clopp is a cross-language omni-functional preprocessor designed to make building for multiple targets easy", function() 
     {
         // Merges default options with custom ones
-        var options = this.options();
+        var options = this.options({
+            inline: false
+        });
         var done = this.async();
 
-        glob(options.files[0], function (err, files) 
+        this.files.forEach(function (file) 
         {
-            console.log(err, files);
+            if (!options.inline && !file.dest)
+            {
+                grunt.log.error("Please specify a writing destination for your preprocessed files, or set inline to true in your task configuration for clopp.");
+                grunt.log.error("Keep in mind that if you choose to use inline preprocessing, you are risking code loss, because the preprocessing will happen in your actual source files.");
 
-            done();
+                throw new Error();
+            }
+
+            file.src.forEach(function (src)
+            {
+                if (grunt.file.isFile(src))
+                {
+                    var preprocessed = clopp.preprocess(grunt, src);
+                    
+                    if (file.dest)
+                        grunt.file.write(file.dest + path.basename(src), preprocessed);
+                    else
+                        grunt.file.write(src, preprocessed);
+                }
+            });
         });
     });
 };
