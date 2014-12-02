@@ -1,0 +1,27 @@
+<html>
+
+<head>
+
+<script type="text/javascript">
+	function keydown()
+	{
+		var regex = new RegExp(document.getElementById('regex').value, 'gi');
+		var string = document.getElementById('string').value;
+
+		string.replace(regex, function () {
+			console.log(arguments);
+		});
+	}
+</script>
+
+</head>
+
+<body>
+
+<textarea id="regex" onkeydown="keydown()" rows="20" cols="50"></textarea>
+
+<textarea id="string" onkeydown="keydown();" rows="20" cols="50"></textarea>
+
+</body>
+
+</html>
