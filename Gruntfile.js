@@ -21,11 +21,11 @@ module.exports = function(grunt) {
             {
                 options: 
                 {
-                    inline: true
+
                 },
                 files:
                 [
-                    { src: ['test/src/*.*'] }
+                    { src: ['test/src/*.*'], dest: 'test/dest/' }
                 ]
             }
         }
