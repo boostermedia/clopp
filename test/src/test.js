@@ -1,7 +1,11 @@
 /* #if myvar == "wat"
-var yep = true;
+var yep = zero;
 /* #elseif myvar == "wie"
-var yep = false;
+var yep = one;
+/* #elseif myvar == "hur"
+var yep = two;
+/* #elseif myvar == "hurdur"
+var yep = three;
 /* #else
 var yep = ietsanders;
-/* #endif */
+// #endif
