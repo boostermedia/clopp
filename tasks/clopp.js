@@ -22,6 +22,9 @@ module.exports = function(grunt)
         });
         var done = this.async();
 
+        // Loop TWICE over files, one for catching all #defines, and one for the actual preprocessing
+
+        // Check for defines
         this.files.forEach(function (file) 
         {
             if (!options.inline && !file.dest)
@@ -36,7 +39,7 @@ module.exports = function(grunt)
             {
                 if (grunt.file.isFile(src))
                 {
-                    var preprocessed = clopp.preprocess(grunt, src);
+                    var preprocessed = clopp.preprocess(grunt, src, {definitions: true, include: true, exclude: true, preprocess: false});
                     
                     if (file.dest)
                         grunt.file.write(file.dest + path.basename(src), preprocessed);
@@ -45,5 +48,37 @@ module.exports = function(grunt)
                 }
             });
         });
+
+        // Actually preprocess here
+        if (options.inline)
+        {
+            this.files.forEach(function (file) 
+            {
+                file.src.forEach(function (src)
+                {
+                    if (grunt.file.isFile(src))
+                    {
+                        var preprocessed = clopp.preprocess(grunt, src, {definitions: false, include: false, exclude: false, preprocess: true});
+
+                        grunt.file.write(src, preprocessed);
+                    }
+                });
+            });
+        }
+        else
+        {
+            this.files.forEach(function (file)
+            {
+                file.src.forEach(function (src)
+                {
+                    if (grunt.file.isFile(src) && grunt.file.isFile(file.dest + path.basename(src)))
+                    {
+                        var preprocessed = clopp.preprocess(grunt, file.dest + path.basename(src), {definitions: false, include: false, exclude: false, preprocess: true});
+
+                        grunt.file.write(file.dest + path.basename(src), preprocessed);
+                    }
+                });
+            });
+        }
     });
 };
