@@ -1,7 +1,7 @@
 {
   "name": "grunt-clopp",
   "description": "clopp is a cross-language omni-functional preprocessor designed to make building for multiple targets easy",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/boostermedia/clopp",
   "author": {
     "name": "Riko Ophorst",
