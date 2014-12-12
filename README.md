@@ -26,64 +26,83 @@ In your project's Gruntfile, add a section named `clopp` to the data object pass
 grunt.initConfig({
   clopp: {
     options: {
-      // Task-specific options go here.
+      inline: [ true | false ]
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+    files:
+    [
+        { src: ['myinput.js'], dest: 'myoutputfolder' }
+    ]
   },
 });
 ```
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.inline
+Type: `boolean`
+Default value: `false`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+This specifies whether you want the preprocessing to happen within the source input file(s). If you chose to do so, keep in mind that you are risking code loss.
+If you do not specify inline, or specify it as false, you have to tell the files configuration what your destination folder is.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+#### Pick all files from your project, and output them in target destination folder
+In this example, we pick all files from our project, and output them in a target destination folder specified via the normal Grunt files format.
 
 ```js
-grunt.initConfig({
-  clopp: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
+module.exports = function(grunt) 
+{
+  grunt.loadNpmTasks('grunt-clopp');
+
+  grunt.initConfig(
+  {
+    clopp: 
+    {
+      preprocess: 
+      {
+        files:
+        [
+          { src: ['*.*'], dest: 'preprocessed' }
+        ]
+      }
+    }
+  });
+
+  grunt.registerTask('default', ['clopp']);
+};
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+#### Inline preprocessing (WARNING: *dangerous*)
+*WARNING! Inline preprocessing is very dangerous. By running this, you are risking severe code loss on your project. Use with caution.*
+In this example, we set the inline option to true and do not specify a destination folder. 
 
 ```js
-grunt.initConfig({
-  clopp: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
+module.exports = function(grunt) 
+{
+  grunt.loadNpmTasks('grunt-clopp');
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+  grunt.initConfig(
+  {
+    clopp: 
+    {
+      preprocess: 
+      {
+        options:
+        {
+          inline: true
+        },
+        files:
+        [
+          { src: ['*.*'] }
+        ]
+      }
+    }
+  });
+
+  grunt.registerTask('default', ['clopp']);
+};
+```
 
 ## Release History
-_(Nothing yet)_
+clopp is still very much in a pre-alpha state. It is no where near supposed to be able to run in a professional production environment.

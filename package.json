@@ -1,7 +1,7 @@
 {
   "name": "grunt-clopp",
-  "description": "clopp is a cross-language omni-functional preprocessor designed to make building for multiple targets easy",
-  "version": "0.0.4",
+  "description": "Grunt plugin to preprocess HTML, JavaScript, CSS, XML, etc.",
+  "version": "0.0.7",
   "homepage": "https://github.com/boostermedia/clopp",
   "author": {
     "name": "Riko Ophorst",
@@ -41,12 +41,22 @@
     "javascript",
     "build",
     "process",
-    "BoosterMedia",
-    "Riko Ophorst",
     "preprocessing",
     "grunt",
     "gruntplugin",
-    "plugin"
+    "plugin",
+    "directive",
+    "var",
+    "env",
+    "environment",
+    "ifdef",
+    "include",
+    "exclude",
+    "define",
+    "ifndef",
+    "pragma"
+    "BoosterMedia",
+    "Riko Ophorst"
   ],
   "dependencies": {
     "glob": "^4.2.1",

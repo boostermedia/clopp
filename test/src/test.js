@@ -1,10 +1,5 @@
-// #define zero "_false"
-// #include test/extra/extra.txt
-// #exclude
-hurdur im a programmer
-// #endexclude
+/* #define environment 2 */
 
-/* #ifndef zero */
-hurdurudududu
-// #endif
-var yep = zero;
+/* #if environment==10-9 */
+hurdur im a hurduuuur
+/* #endif */
