@@ -36,7 +36,17 @@
     "grunt": "~0.4.5"
   },
   "keywords": [
-    "gruntplugin"
+    "clopp",
+    "preprocessor",
+    "javascript",
+    "build",
+    "process",
+    "BoosterMedia",
+    "Riko Ophorst",
+    "preprocessing",
+    "grunt",
+    "gruntplugin",
+    "plugin"
   ],
   "dependencies": {
     "glob": "^4.2.1",
