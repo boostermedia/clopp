@@ -18,11 +18,14 @@ module.exports = function(grunt)
     {
         // Merges default options with custom ones
         var options = this.options({
-            inline: false
+            inline: false,
+            context: {}
         });
         var done = this.async();
 
         // Loop TWICE over files, one for catching all #defines, #includes & #excludes, and one for the actual preprocessing
+
+        clopp.setContext(options.context);
 
         // Check for #defines, #includes & #excludes
         this.files.forEach(function (file) 

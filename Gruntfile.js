@@ -21,7 +21,9 @@ module.exports = function(grunt) {
             {
                 options: 
                 {
-
+                    context: {
+                        HelloDavidHowsYouDoin: 'hurdur im a hurdur'
+                    }
                 },
                 files:
                 [
