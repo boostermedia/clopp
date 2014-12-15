@@ -1,8 +1,7 @@
 /* #define environment (function(){console.log();}) */
 
-
-HelloDavidHowsYouDoin
-
-hurdur im a hurduuuur
-
-environment();
+/* #if 1+1==2 */
+ja!
+/* #else */
+nee!
+/* #endif */
