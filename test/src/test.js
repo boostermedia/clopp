@@ -1,5 +1,6 @@
-/* #define environment 2 */
+/* #define environment (function(){console.log();}) */
 
-/* #if environment==10-9 */
+
 hurdur im a hurduuuur
-/* #endif */
+
+environment();

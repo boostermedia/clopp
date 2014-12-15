@@ -22,9 +22,9 @@ module.exports = function(grunt)
         });
         var done = this.async();
 
-        // Loop TWICE over files, one for catching all #defines, and one for the actual preprocessing
+        // Loop TWICE over files, one for catching all #defines, #includes & #excludes, and one for the actual preprocessing
 
-        // Check for defines
+        // Check for #defines, #includes & #excludes
         this.files.forEach(function (file) 
         {
             if (!options.inline && !file.dest)
