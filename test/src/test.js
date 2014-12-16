@@ -2,7 +2,7 @@
 
 /* #if 1+1==3 */
 	ja!
-	/* #elseif "lol"=="l0l" */
+	/* #elseif "lol"=="lol" */
 		jaaaa!fdg
 	/* #endelseif */
 	/* #elseif "lol"=="lol" */
@@ -14,3 +14,14 @@
 	/* #else */
 		nee!
 /* #endif */
+
+// #define DavidAge 29
+
+// #if DavidAge == 30
+Dayum. David be DavidAge old! damn son, whered u find dat
+// #elseif DavidAge == 29
+David is 29 years old. Damn, he be old.
+// #endelseif
+// #else
+Nobody knows how old David is...
+// #endif
