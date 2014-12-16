@@ -19,15 +19,9 @@ module.exports = function(grunt) {
         {
             preprocess: 
             {
-                options: 
-                {
-                    context: {
-                        HelloDavidHowsYouDoin: 'hurdur im a hurdur'
-                    }
-                },
                 files:
                 [
-                    { src: ['test/src/*.*'], dest: 'test/dest/' }
+                    { src: 'test/src/*.*', dest: 'test/dest/' }
                 ]
             }
         }
