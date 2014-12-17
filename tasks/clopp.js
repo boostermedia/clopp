@@ -46,7 +46,7 @@ module.exports = function(grunt)
 
             file.src.forEach(function (src)
             {
-                if (!fs.existsSync(file.dest))
+                if (file.dest && !fs.existsSync(file.dest) && !options.inline)
                 {
                     grunt.log.error("Please make sure that your destination folder is already existing before running clopp! The following destination folder is not yet existing:");
                     grunt.log.error("Folder:\t" + file.dest);
@@ -54,7 +54,7 @@ module.exports = function(grunt)
                     throw new Error();
                 }
 
-                if (!fs.lstatSync(file.dest).isDirectory())
+                if (file.dest && !fs.lstatSync(file.dest).isDirectory() && !options.inline)
                 {
                     grunt.log.error("You specified an actual file for the destination of one of your configured source files.");
                     grunt.log.error("Please check your grunt-clopp configuration and make sure to only submit folders as destination locations.");
