@@ -1,7 +1,7 @@
 {
   "name": "grunt-clopp",
   "description": "Grunt plugin to preprocess HTML, JavaScript, CSS, XML, etc.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/boostermedia/clopp",
   "author": {
     "name": "Riko Ophorst",
