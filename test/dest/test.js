@@ -38,7 +38,7 @@ _.extend(app, {
 	},
 	analytics: function (type, callback, ctx)
 	{
-		doSomeProductionCall(type, callback, ctx);
+		console.log();
 
 	},
 	version: function ()

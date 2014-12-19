@@ -42,10 +42,12 @@ _.extend(app, {
 	},
 	analytics: function (type, callback, ctx)
 	{
-		/* #if __environment == "prod"
+		/* #if __environment == "prodd"
 		doSomeProductionCall(type, callback, ctx);
 		/* #elseif __environment == "stage"
 		doSomeStageCall(type, callback, ctx);
+		/* #elseif 1+1==2
+		console.log();
 		/* #else */
 		callback.call(ctx);
 		/* #endif */

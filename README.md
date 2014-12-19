@@ -236,7 +236,7 @@ console.log("Apparently, 3+3 equals 6!");
 ```
 
 #### `#elseif`
-`#elseif` is a statement you can put in your code which clopp will pick up. `#elseif` functions pretty much in the same way as any `#if` statement would function, however it has a different end statement (`#endelseif`) and it has to be **inside an `#if` block**. It's on the to-do list to loosen up this syntax (because it is very strict at the moment), however if-elseif-else logic is really complicated when you are in the world of regex. Sorry!
+`#elseif` is a statement you can put in your code which clopp will pick up. `#elseif` functions pretty much in the same way as any `#if` statement would function, however it has to be **inside an `#if` block**. It's on the to-do list to loosen up this syntax (because it is very strict at the moment), however if-elseif-else logic is really complicated when you are in the world of regex. Sorry!
 
 Examples of `#elseif` in `JavaScript`:
 ```javascript
@@ -244,19 +244,6 @@ Examples of `#elseif` in `JavaScript`:
 console.log("Today I learned that 1+1 equals 3.");
 // #elseif 1+1==4
 console.log("Okay, what dimension are we in where 1+1 equals 4?");
-// #endelseif
-// #elseif 1+1==2
-console.log("Back on earth! 1+1 does equal 2!");
-// #endelseif
-// #endif
-
-// By the way, you should note that you can omit the #endelseif statement in your LAST #elseif block as I will demonstrate below. However, it is not recommended to omit the #endelseif statement because you want to be consistent with your code. (excuse my lazy ass for copy pasting the above example
-
-// #if 1+1==3
-console.log("Today I learned that 1+1 equals 3.");
-// #elseif 1+1==4
-console.log("Okay, what dimension are we in where 1+1 equals 4?");
-// #endelseif
 // #elseif 1+1==2
 console.log("Back on earth! 1+1 does equal 2!");
 // #endif
@@ -279,7 +266,6 @@ console.log("Okay, okay.. 1+1 does not actually equal 3..");
 console.log("Today I learned that 1+1 equals 3.");
 // #elseif 1+1==4
 console.log("Okay, what dimension are we in where 1+1 equals 4?");
-// #endelseif
 // #else
 console.log("Hrrm.. okay we don't know what 1+1 equals to!");
 // #endif
