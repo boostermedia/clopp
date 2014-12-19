@@ -71,7 +71,7 @@ module.exports = function(grunt)
                         searchDefinitions: options.definitions,
                         replaceDefinitions: false,
                         include: options.include, 
-                        exclude: options.excludes,
+                        exclude: options.exclude,
                         skips: options.skips, 
                         preprocess: false
                     });

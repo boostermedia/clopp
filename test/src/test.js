@@ -1,27 +1,57 @@
-/* #define environment (function(){console.log();}) */
+/*
+ * grunt-clopp
+ * https://github.com/boostermedia/clopp
+ *
+ * Copyright (c) 2014 Riko Ophorst
+ * Licensed under the MIT license.
+ */
 
-/* #if 1+1==3 */
-	ja!
-	/* #elseif "lol"=="lol" */
-		jaaaa!fdg
-	/* #endelseif */
-	/* #elseif "lol"=="lol" */
-		jaaaa!
-	/* #endelseif */
-	/* #elseif 5+5==10
-		david holy balls t werkt gewoon!
-	/* #endelseif */
-	/* #else */
-		nee!
-/* #endif */
+// #define assert (function(condition,errorMsg){if(!condition){someErrorFunction(errorMsg);}})
 
-// #define DavidAge 29
+var app = {};
 
-// #if DavidAge == 30
-Dayum. David be DavidAge old! damn son, whered u find dat
-// #elseif DavidAge == 29
-David is 29 years old. Damn, he be old.
-// #endelseif
-// #else
-Nobody knows how old David is...
-// #endif
+_.extend(app, {
+	initializeApp: function () {
+		assert(loggedIn, 'ermehgerwd');
+
+		doSomeInitializationCode();
+	},
+	loginUser: function () 
+	{
+
+	},
+	viewAd: function (callback, ctx)
+	{
+		/* #ifdef __ads
+		doSomeAdCall(callback, ctx);
+		return;
+		/* #endif */
+		/* #ifndef __ads */
+		callback.call(ctx);
+		/* #endif */
+	},
+	getMetaData: function () 
+	{
+		return "/* #include test\src\metadata.js */";
+	},
+	showDebuggingTools: function ()
+	{
+		/* #exclude */
+		showAllTheDebuggerTools();
+		/* #endexclude */
+	},
+	analytics: function (type, callback, ctx)
+	{
+		/* #if __environment == "prod"
+		doSomeProductionCall(type, callback, ctx);
+		/* #elseif __environment == "stage"
+		doSomeStageCall(type, callback, ctx);
+		/* #else */
+		callback.call(ctx);
+		/* #endif */
+	},
+	version: function ()
+	{
+		return __version;
+	}
+});

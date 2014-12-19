@@ -19,6 +19,12 @@ module.exports = function(grunt) {
         {
             preprocess: 
             {
+                options: {
+                    context: {
+                        __ads: '"true"',
+                        __environment: '"prod"'
+                    }
+                },
                 files:
                 [
                     { src: 'test/src/*.*', dest: 'test/dest/' }
