@@ -26,7 +26,6 @@ module.exports = function(grunt)
             preprocess: true,
             context: {}
         });
-        var done = this.async();
 
         // Set the context in which the preprocessor will operate
         clopp.setContext(options.context);
