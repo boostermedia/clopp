@@ -28,9 +28,17 @@ module.exports = function(grunt)
         });
 
         // Set the context in which the preprocessor will operate
-        clopp.setContext(options.context);
+        clopp.setContext(options.context, grunt);
         
         // Loop TWICE over files, one for catching all #defines, #includes & #excludes, and one for the actual preprocessing
+
+        grunt.verbose.write("First iteration over specified files, using following settings: \n".yellow);
+        grunt.verbose.write("- searchDefinitions: " + options.definitions + "\n");
+        grunt.verbose.write("- replaceDefinitions: false\n");
+        grunt.verbose.write("- include: " + options.include + "\n");
+        grunt.verbose.write("- exclude: " + options.exclude + "\n");
+        grunt.verbose.write("- skips: " + options.skips + "\n");
+        grunt.verbose.write("- preprocess: false\n\n");
 
         // Check for #defines, #includes & #excludes
         this.files.forEach(function (file) 
@@ -66,6 +74,7 @@ module.exports = function(grunt)
 
                 if (grunt.file.isFile(src))
                 {
+                    //grunt.verbose.write("Scanning file " + src.cyan + "...");
                     var preprocessed = clopp.preprocess(grunt, src, {
                         searchDefinitions: options.definitions,
                         replaceDefinitions: false,
@@ -76,12 +85,26 @@ module.exports = function(grunt)
                     });
                     
                     if (file.dest)
+                    {
+                        //grunt.verbose.write("Writing result to " + (file.dest + path.basename(src)).cyan + "...");
                         grunt.file.write(file.dest + path.basename(src), preprocessed);
+                    }
                     else
+                    {
+                        //grunt.verbose.write("Writing result to " + src.cyan + "...");
                         grunt.file.write(src, preprocessed);
+                    }
                 }
             });
         });
+
+        grunt.verbose.write("\nSecond iteration over specified files, using following settings:\n".yellow);
+        grunt.verbose.write("- searchDefinitions: false\n");
+        grunt.verbose.write("- replaceDefinitions: true\n");
+        grunt.verbose.write("- include: false\n");
+        grunt.verbose.write("- exclude: false\n");
+        grunt.verbose.write("- skips: true\n");
+        grunt.verbose.write("- preprocess: " + options.preprocess + "\n\n");
 
         // Actually preprocess here
         if (options.inline)
@@ -92,15 +115,17 @@ module.exports = function(grunt)
                 {
                     if (grunt.file.isFile(src))
                     {
+                        //grunt.verbose.write("Preprocessing file " + src.cyan + "...");
                         var preprocessed = clopp.preprocess(grunt, src, {
                             searchDefinitions: false,
                             replaceDefinitions: true,
                             include: false, 
                             exclude: false,
-                            skips: false,
+                            skips: true,
                             preprocess: options.preprocess
                         });
 
+                        //grunt.verbose.write("Writing result to " + src.cyan + "...");
                         grunt.file.write(src, preprocessed);
                     }
                 });
@@ -114,15 +139,17 @@ module.exports = function(grunt)
                 {
                     if (grunt.file.isFile(src) && grunt.file.isFile(file.dest + path.basename(src)))
                     {
+                        //grunt.verbose.write("Preprocessing file " + (file.dest + path.basename(src)).cyan + "...");
                         var preprocessed = clopp.preprocess(grunt, file.dest + path.basename(src), {
                             searchDefinitions: false,
                             replaceDefinitions: true,
                             include: false, 
                             exclude: false,
-                            skips: false, 
+                            skips: true, 
                             preprocess: options.preprocess
                         });
 
+                        //grunt.verbose.write("Writing result to " + (file.dest + path.basename(src)).cyan + "...");
                         grunt.file.write(file.dest + path.basename(src), preprocessed);
                     }
                 });
