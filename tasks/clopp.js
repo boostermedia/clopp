@@ -24,6 +24,7 @@ module.exports = function(grunt)
             exclude: true,
             skips: true,
             preprocess: true,
+            filetypes: false,
             context: {}
         });
 
@@ -38,6 +39,7 @@ module.exports = function(grunt)
         grunt.verbose.write("- include: " + options.include + "\n");
         grunt.verbose.write("- exclude: " + options.exclude + "\n");
         grunt.verbose.write("- skips: " + options.skips + "\n");
+        grunt.verbose.write("- filetypes: " + options.filetypes + "\n");
         grunt.verbose.write("- preprocess: false\n\n");
 
         // Check for #defines, #includes & #excludes
@@ -80,7 +82,8 @@ module.exports = function(grunt)
                         replaceDefinitions: false,
                         include: options.include, 
                         exclude: options.exclude,
-                        skips: options.skips, 
+                        skips: options.skips,
+                        filetypes: options.filetypes,
                         preprocess: false
                     });
                     
@@ -104,6 +107,7 @@ module.exports = function(grunt)
         grunt.verbose.write("- include: false\n");
         grunt.verbose.write("- exclude: false\n");
         grunt.verbose.write("- skips: true\n");
+        grunt.verbose.write("- filetypes: " + options.filetypes + "\n");
         grunt.verbose.write("- preprocess: " + options.preprocess + "\n\n");
 
         // Actually preprocess here
@@ -122,6 +126,7 @@ module.exports = function(grunt)
                             include: false, 
                             exclude: false,
                             skips: true,
+                            filetypes: options.filetypes,
                             preprocess: options.preprocess
                         });
 
@@ -145,7 +150,8 @@ module.exports = function(grunt)
                             replaceDefinitions: true,
                             include: false, 
                             exclude: false,
-                            skips: true, 
+                            skips: true,
+                            filetypes: options.filetypes,
                             preprocess: options.preprocess
                         });
 

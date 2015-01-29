@@ -6,6 +6,8 @@
  * Licensed under the MIT license.
  */
 
+// #filetype HTML
+
 // #define assert (function(condition,errorMsg){if(!condition){someErrorFunction(errorMsg);}})
 
 var app = {};

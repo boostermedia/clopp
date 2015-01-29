@@ -30,6 +30,15 @@ Valid question. There are several use-cases for this kind of thing:
 4. If you have any experience with other preprocessors (such as the one in C++), you will understand how useful **macros** (or other definitions) are.
 5. You can clopp it like it's hot... *hehehehe*
 
+#### What languages does clopp support?
+1. JavaScript
+2. TypeScript
+3. HTML (and JavaScript inside HTML, obviously!)
+4. CSS / LESS / SASS
+5. C / C# / C++
+6. Java
+7. PHP
+
 Here is a short example of what clopp can do for you.
 
 ```javascript
@@ -131,7 +140,31 @@ Type: `boolean` Default value: `true`
 
 If you set this to false, clopp will no longer look for any `#if`, `#ifdef` or `#ifndef` statements in your code.
 
+#### options.filetypes
+Type: `boolean` Default value: `false`
+
+This enables or disables the `#filetype` statements in your code.
+
 #### clopp syntax
+
+#### `#filetype`
+`#filetype` allows you to override the type that clopp finds for your files (which is originally determined by extracting the extension from the file name).
+
+Examples of `#filetype` in `JavaScript`:
+```javascript
+// #filetype JavaScript
+/* #filetype JavaScript */
+```
+
+List of supported keywords for `#filetype` (non case-sensitive):
+1. JavaScript: `JavaScript` and `JS`
+2. TypeScript: `TypeScript` and `TS`
+3. CSS: `CSS`, `SASS` and `LESS`
+4. HTML: `HTML`
+5. XML: `XML`
+6. C / C# / C++: `C`, `C#`, `C sharp`, `Csharp`, `C-sharp`, `C++`, `cpp`, `cc`
+7. Java: `Java`
+8. PHP: `PHP`
 
 #### `#define`
 `#define` is a statement you can put in your code which clopp will pick up. It basically works like a `JavaScript` variable. clopp will do a text based *search & replace* on all your files and replace all definitions it can find with the definitions' value.

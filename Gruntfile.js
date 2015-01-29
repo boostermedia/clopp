@@ -20,6 +20,7 @@ module.exports = function(grunt) {
             preprocess: 
             {
                 options: {
+                    filetypes: true,
                     context: {
                         __ads: '"true"',
                         __environment: '"prod"'
@@ -27,7 +28,7 @@ module.exports = function(grunt) {
                 },
                 files:
                 [
-                    { src: 'test/src/*.*', dest: 'test/dest/' }
+                    { src: 'test/src/test.js', dest: 'test/dest/' }
                 ]
             }
         }

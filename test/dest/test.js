@@ -6,13 +6,15 @@
  * Licensed under the MIT license.
  */
 
+// #filetype HTML
 
+// #define assert (function(condition,errorMsg){if(!condition){someErrorFunction(errorMsg);}})
 
 var app = {};
 
 _.extend(app, {
 	initializeApp: function () {
-		(function(condition,errorMsg){if(!condition){someErrorFunction(errorMsg);}})(loggedIn, 'ermehgerwd');
+		assert(loggedIn, 'ermehgerwd');
 
 		doSomeInitializationCode();
 	},
