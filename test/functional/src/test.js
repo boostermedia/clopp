@@ -34,7 +34,7 @@ _.extend(app, {
 	},
 	getMetaData: function () 
 	{
-		return "/* #include test\src\metadata.js */";
+		return "/* #include test\functional\src\metadata.txt */";
 	},
 	showDebuggingTools: function ()
 	{
@@ -44,7 +44,7 @@ _.extend(app, {
 	},
 	analytics: function (type, callback, ctx)
 	{
-		/* #if __environment == "prodd"
+		/* #if __environment == "prod"
 		doSomeProductionCall(type, callback, ctx);
 		/* #elseif __environment == "stage"
 		doSomeStageCall(type, callback, ctx);

@@ -8,8 +8,8 @@
 
 "use strict";
 
-var fs = require("fs");
-var path = require("path");
+var fs    = require("fs");
+var path  = require("path");
 var clopp = require("../lib/clopp.js");
 
 module.exports = function(grunt) 

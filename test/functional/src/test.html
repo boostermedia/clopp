@@ -12,9 +12,8 @@
     <title>Production</title>
     <!-- #elseif __environment=='stage'
     <title>Stage</title>
-    <!-- #endelseif
     <!-- #else -->
-    <title>undefined</title>
+    <title>Dev</title>
     <!-- #endif -->
 
     <meta charset="utf-8"/>
@@ -47,7 +46,29 @@
     <p>it's not defined!</p>
     <!-- #endif -->
 
-    <p><!-- #include test/src/metadata.js --></p>
+    <p><!-- #include test/functional/src/metadata.txt --></p>
 
+    <p>if elseif else tests</p>
+    <!-- #if true
+    <p>if</p>
+    <!-- #elseif false
+    <p>elseif</p>
+    <!-- #else
+    <p>else</p>
+    <!-- #endif -->
+    <!-- #if false
+    <p>if</p>
+    <!-- #elseif true
+    <p>elseif</p>
+    <!-- #else
+    <p>else</p>
+    <!-- #endif -->
+    <!-- #if false
+    <p>if</p>
+    <!-- #elseif false
+    <p>elseif</p>
+    <!-- #else
+    <p>else</p>
+    <!-- #endif -->
 </body>
 </html>
