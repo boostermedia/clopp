@@ -40,7 +40,7 @@ _.extend(app, {
 	},
 	analytics: function (type, callback, ctx)
 	{
-		console.log();
+		doSomeStageCall(type, callback, ctx);
 
 	},
 	version: function ()

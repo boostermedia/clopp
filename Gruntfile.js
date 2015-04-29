@@ -23,10 +23,11 @@ module.exports = function(grunt) {
             preprocess: 
             {
                 options: {
+                    verbose: true,
                     filetypes: true,
                     context: {
-                        __ads: '"true"',
-                        __environment: '"unknown"'
+                        __ads: true,
+                        __environment: 'stage'
                     }
                 },
                 files:
