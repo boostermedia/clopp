@@ -12,8 +12,21 @@ module.exports = function(grunt) {
     grunt.loadTasks('tasks');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-bump');
+
+    var bump = grunt.option("bump") || 'patch'; // what to bump
 
     grunt.initConfig({
+        bump: {
+            options: {
+                dryRun: false,
+                files: ['package.json'],
+                commit: true,
+                commitFiles: ['-a'],
+                createTag: true,
+                push: true
+            }
+        },
         clean: 
         {
             tests: ['test/functional/dest/*', '!test/functional/dest/*.md']
@@ -23,7 +36,6 @@ module.exports = function(grunt) {
             preprocess: 
             {
                 options: {
-                    verbose: true,
                     filetypes: true,
                     context: {
                         __ads: true,
@@ -49,5 +61,6 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.registerTask('build',   ['bump-only:'+bump, 'clean', 'clopp', 'bump-commit']);
     grunt.registerTask('default', ['clean', 'clopp']);
 };
